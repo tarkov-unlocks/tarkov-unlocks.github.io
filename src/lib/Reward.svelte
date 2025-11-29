@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Quest from './Quest.svelte';
-	import type { Quest as QuestT } from './types';
+	import { traderLevels, type Quest as QuestT } from './utils';
 
 	let {
 		name,
@@ -53,7 +53,7 @@
 				{trader}
 			</span>
 			<span class="text-nowrap font-semibold group-hover:underline w-16">
-				(lv. {quest.lvl})
+				(lv. {Math.max(quest.lvl, traderLevels[trader] ?? 0)})
 			</span>
 		</div>
 		<span class="font-semibold group-hover:underline">

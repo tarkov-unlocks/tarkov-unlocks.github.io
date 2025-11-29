@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Quest as QuestT } from './types';
+	import type { Quest as QuestT } from './utils';
 	import Quest from './Quest.svelte';
 
 	let { quest, indent = 0 }: { quest: QuestT; indent?: number } = $props();

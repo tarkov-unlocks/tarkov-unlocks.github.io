@@ -17,6 +17,33 @@ export type Unlock = {
 	quest: Quest;
 }
 
+export const traderLevels: Record<string, number> = {
+	'Prapor 2': 26,
+	'Prapor 3': 26,
+	'Prapor 4': 36,
+	'Therapist 2': 14,
+	'Therapist 3': 24,
+	'Therapist 4': 37,
+	'Skier 2': 15,
+	'Skier 3': 28,
+	'Skier 4': 38,
+	'Peacekeeper 2': 14,
+	'Peacekeeper 3': 23,
+	'Peacekeeper 4': 37,
+	'Mechanic 2': 20,
+	'Mechanic 3': 30,
+	'Mechanic 4': 40,
+	'Ragman 2': 17,
+	'Ragman 3': 32,
+	'Ragman 4': 42,
+	'Jaeger 2': 15,
+	'Jaeger 3': 22,
+	'Jaeger 4': 33,
+	'Ref 2': 15,
+	'Ref 3': 25,
+	'Ref 4': 35
+};
+
 // import _quests from "./quests.json"
 
 // // export type Quest = typeof quests[keyof typeof quests];

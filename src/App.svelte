@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Quest, Unlock as UnlockT } from './lib/types';
+	import { traderLevels, type Quest, type Unlock as UnlockT } from './lib/utils';
 	import Reward from './lib/Reward.svelte';
 	import questsData from './lib/quests-data.json';
 
@@ -98,7 +98,7 @@
 		if (orphan) console.error(`Orphan unlock: ${unlock.name}`);
 	}
 	const sortOptions = ['Name', 'Trader', 'Level'];
-	let sort = $state('Name');
+	let sort = $state('Level');
 	let sortKey = $state('asd'); // Yikes but this is neccessary
 
 	$effect(() => console.log('sort changed:', sort));
@@ -112,7 +112,10 @@
 				} else if (sort === 'Trader') {
 					return a.trader.localeCompare(b.trader);
 				} else if (sort === 'Level') {
-					return a.quest.lvl - b.quest.lvl;
+					return (
+						Math.max(a.quest.lvl, traderLevels[a.trader] ?? 0) -
+						Math.max(b.quest.lvl, traderLevels[b.trader] ?? 0)
+					);
 				}
 				return 0;
 			})
