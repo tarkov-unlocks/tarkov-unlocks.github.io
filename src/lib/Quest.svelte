@@ -2,7 +2,7 @@
 	import type { Quest as QuestT } from './types';
 	import Quest from './Quest.svelte';
 
-	export const { quest, indent = 0 }: { quest: QuestT; indent: number } = $props();
+	let { quest, indent = 0 }: { quest: QuestT; indent?: number } = $props();
 </script>
 
 <div class="ml-2">

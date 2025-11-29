@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { stopPropagation } from 'svelte/legacy';
 	import Quest from './Quest.svelte';
 	import type { Quest as QuestT } from './types';
 
-	export const {
+	let {
 		name,
 		trader,
 		quest,
@@ -42,15 +41,21 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class:bg-slate-200={expanded} onclick={expand} class="group cursor-pointer">
+<div
+	class:bg-slate-200={expanded}
+	onclick={expand}
+	class="group cursor-pointer text-sm sm:text-base not-first:border-t border-gray-300"
+>
 	<div class="flex items-center gap-2">
-		<img src={icon ?? '#'} alt={name} height="20px" class="h-12" />
-		<span class="font-semibold group-hover:underline w-30 text-nowrap">
-			{trader}
-		</span>
-		<span class="w-18 text-nowrap font-semibold group-hover:underline">
-			(lv. {quest.lvl})
-		</span>
+		<img src={icon ?? '#'} alt={name} class="h-12 sm:h-16" />
+		<div class="flex flex-col w-24 shrink-0 text-nowrap sm:flex-row sm:items-center sm:w-auto">
+			<span class="font-semibold group-hover:underline w-30">
+				{trader}
+			</span>
+			<span class="text-nowrap font-semibold group-hover:underline w-16">
+				(lv. {quest.lvl})
+			</span>
+		</div>
 		<span class="font-semibold group-hover:underline">
 			{name}
 		</span>

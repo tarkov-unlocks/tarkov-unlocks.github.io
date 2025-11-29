@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Quest, Unlock as UnlockT } from './lib/types';
-	import Unlock from './lib/Unlock.svelte';
+	import Reward from './lib/Reward.svelte';
 	import questsData from './lib/quests-data.json';
 
 	const tasks = questsData;
@@ -76,7 +76,6 @@
 		'Headwear',
 		'Face Cover',
 		'Armored equipment',
-		'Drug',
 		'Stimulant',
 		'Meds',
 		'Item'
@@ -126,30 +125,42 @@
 	// const quests: Quest[] = tasks.map((t) => questsMap[t.name]);
 </script>
 
-<main>
+<main class="max-w-6xl mx-auto sm:*:mx-4 my-8">
+	<div>
+		<h1 class="text-2xl font-bold">Tarkov Unlocks</h1>
+		<p>View quest requirements for all the unlockable crafts and trader offers</p>
+	</div>
+
 	<div>
 		<span class="font-semibold">Sort: </span>
-		<select bind:value={sort} class="mb-4">
+		<select bind:value={sort}>
 			{#each sortOptions as option}
 				<option value={option}>{option}</option>
 			{/each}
 		</select>
 	</div>
 
-	{#key sortKey}
-		{#each unlockGroups as { name, unlocks }}
-			<div class="not-first:mt-8 text-lg font-semibold">{name}</div>
-			{#each Object.values(unlocks) as unlock}
-				<Unlock
-					name={unlock.name}
-					trader={unlock.trader}
-					quest={unlock.quest}
-					wiki={unlock.wiki}
-					icon={unlock.icon}
-					expanded={unlock.name === expanded}
-					expand={() => (expanded = unlock.name === expanded ? '' : unlock.name)}
-				/>
+	<div class="select-none">
+		{#key sortKey}
+			{#each unlockGroups as { name, unlocks }}
+				<div class="mt-8 text-lg font-semibold">{name}</div>
+				{#each Object.values(unlocks) as unlock}
+					{@const key = `${unlock.name}-${unlock.trader}-${unlock.quest.name}`}
+					<Reward
+						name={unlock.name}
+						trader={unlock.trader}
+						quest={unlock.quest}
+						wiki={unlock.wiki}
+						icon={unlock.icon}
+						expanded={key === expanded}
+						expand={() => (expanded = key === expanded ? '' : key)}
+					/>
+				{/each}
 			{/each}
-		{/each}
-	{/key}
+		{/key}
+	</div>
+
+	<div class="mt-8 hover:underline cursor-pointer">
+		<a href="https://github.com/tarkov-unlocks/tarkov-unlocks" target="_blank">(Source)</a>
+	</div>
 </main>
