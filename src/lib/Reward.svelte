@@ -42,7 +42,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class:bg-slate-200={expanded}
+	class:bg-gray-100={expanded}
 	onclick={expand}
 	class="group cursor-pointer text-sm sm:text-base not-first:border-t border-gray-300"
 >
@@ -59,12 +59,7 @@
 		<span class="font-semibold group-hover:underline">
 			{name}
 		</span>
-		<a
-			href={wiki}
-			target="_blank"
-			class="hover:underline cursor-pointer"
-			onclick={(e) => e.stopPropagation()}
-		>
+		<a href={wiki} class="hover:underline cursor-pointer" onclick={(e) => e.stopPropagation()}>
 			(wiki)
 		</a>
 	</div>

@@ -6,11 +6,8 @@
 </script>
 
 <div class="ml-2">
-	<a
-		href={quest.wiki}
-		target="_blank"
-		onclick={(e) => e.stopPropagation()}
-		class="hover:underline cursor-pointer">{quest.name}</a
+	<a href={quest.wiki} onclick={(e) => e.stopPropagation()} class="hover:underline cursor-pointer"
+		>{quest.name}</a
 	>
 
 	<span>
