@@ -1,3 +1,4 @@
+import type { Item } from "./item";
 import questsData from "./quests-data.json"
 
 export type Quest = {
@@ -9,11 +10,14 @@ export type Quest = {
 }
 
 export type Unlock = {
-	name: string;
+	item: Item;
 	trader: string;
-	wiki?: string;
-	icon?: string;
-	categories: string[];
+	quest: Quest;
+}
+
+export type Reward = {
+	item: Item;
+	count: number;
 	quest: Quest;
 }
 

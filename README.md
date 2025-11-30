@@ -1,4 +1,6 @@
-# Svelte + TS + Vite
+# Tarkov Rewards
+
+A web app to view Escape from Tarkov quest rewards and unlocks.
 
 ## Useful commands
 

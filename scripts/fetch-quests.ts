@@ -35,6 +35,18 @@ const QUERY = `query MyQuery {
           }
         }
       }
+      items {
+        quantity
+        count
+        item {
+          name
+          categories {
+            name
+          }
+          wikiLink
+          inspectImageLink
+        }
+      }
     }
     taskRequirements {
       task {
